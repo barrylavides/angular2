@@ -5,9 +5,9 @@ import {AutoGrowDirective} from './directives/auto-grow.directive'
 @Component({
 	selector: 'courses',
 	template: `
-		<h2 myHighlight>Courses</h2>
+		<h2>Courses</h2>
 		{{ title }}
-		<input type="text" />
+		<input type="text" autoGrow />
 		<ul>
 			<li *ngFor="#course of courses">
 				{{course}}

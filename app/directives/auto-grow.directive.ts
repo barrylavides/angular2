@@ -1,9 +1,18 @@
 import {Directive, ElementRef, Input} from 'angular2/core';
 @Directive({
-    selector: '[myHighlight]'
+    selector: '[autoGrow]',
+	host: {
+    	'(focus)': 'onFocus()',
+    	'(blur)': 'onBlur()'
+  	}
 })
 export class AutoGrowDirective {
-    constructor(el: ElementRef) {
-       el.nativeElement.style.backgroundColor = 'yellow';
-    }
+  constructor(private el: ElementRef) {}
+
+	onFocus() {
+		this.el.nativeElement.style.width = '400';
+	}
+  	onBlur() {
+  		this.el.nativeElement.style.width = '100';
+  	}
 }

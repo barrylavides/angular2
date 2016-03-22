@@ -20,11 +20,21 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         execute: function() {
             AutoGrowDirective = (function () {
                 function AutoGrowDirective(el) {
-                    el.nativeElement.style.backgroundColor = 'yellow';
+                    this.el = el;
                 }
+                AutoGrowDirective.prototype.onFocus = function () {
+                    this.el.nativeElement.style.width = '400';
+                };
+                AutoGrowDirective.prototype.onBlur = function () {
+                    this.el.nativeElement.style.width = '100';
+                };
                 AutoGrowDirective = __decorate([
                     core_1.Directive({
-                        selector: '[myHighlight]'
+                        selector: '[autoGrow]',
+                        host: {
+                            '(focus)': 'onFocus()',
+                            '(blur)': 'onBlur()'
+                        }
                     }), 
                     __metadata('design:paramtypes', [core_1.ElementRef])
                 ], AutoGrowDirective);
